@@ -1,24 +1,28 @@
 <?php
 
 class Database {
-private $host = "localhost";
-private $dbname = "todo";
-private $username = "root";
-private $password = "";
 
-public $conn;
+    private $host = "localhost";
+    private $db_name = "todo";
+    private $username = "root";
+    private $password = "";
 
-public function getConnection()
-    {
+    public $conn;
+
+    public function getConnection() {
         $this->conn = null;
 
-try {
-   $this->conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
-        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo("Koneksi database gagal: " . $e->getMessage());
-}
-  return $this->conn;
-}
+        try {
+            $this->conn = new PDO(
+                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                $this->username,
+                $this->password
+            );
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo("Koneksi gagal: " . $e->getMessage());
+        }
+
+        return $this->conn;
+    }
 }
