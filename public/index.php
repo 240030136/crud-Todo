@@ -17,7 +17,8 @@ $todos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h2>Tambah Todo</h2>
 
 <form action="create.php" method="POST">
-    <input type="text" name="title" placeholder="Judul todo" required>
+    <input type="text" name="title" placeholder="Judul todo" required><br><br>
+    <textarea name="description" placeholder="Deskripsi todo"></textarea><br><br>
     <button type="submit">Tambah</button>
 </form>
 
@@ -28,10 +29,21 @@ if (count($todos) === 0) {
     echo "<ul>";
     foreach ($todos as $todo) {
         $statusText = $todo['status'] ? 'pending' : 'done';
-        echo "<li>" . htmlspecialchars($todo['title']) . " ($statusText)</li>";
-    }
-    echo "</ul>";
+        if ($todo['description'] === null || trim($todo['description']) === '') {
+            $description = "no description";
+        } else { 
+            $description = htmlspecialchars($todo['description']);
+        }
+            
+     echo "<li>";
+        echo "<strong>" . htmlspecialchars($todo['title']) . "</strong><br>";
+       echo "Deskripsi: " . $description . "<br>";
+        echo "Status: " . $statusText . "<br>";
+        echo "Dibuat: " . $todo['created_at'];
+        echo "</li><hr>";
+    }    
 }
 ?>
+
 </body>
 </html>

@@ -10,9 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $database = new Database();
         $db = $database->getConnection();
 
-        $query = "INSERT INTO todos (title) VALUES (:title)";
+        $query = "INSERT INTO todos (title, description) VALUES (:title, :description)";
         $stmt = $db->prepare($query);
         $stmt->bindParam(":title", $title);
+        $stmt->bindParam(":description", $description);
 
         if ($stmt->execute()) {
             header("Location: index.php");
@@ -25,3 +26,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Judul tidak boleh kosong";
     }
 }
+?>
