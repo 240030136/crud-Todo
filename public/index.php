@@ -17,14 +17,13 @@ if (isset($_POST['submit'])) {
         $description = "No description";
     }
 
-    $stmt = $db->prepare("INSERT INTO todos (title, description, status) VALUES (?, ?, 'pending')");
+    $stmt = $db->prepare("INSERT INTO todos (title, description, status) VALUES (?, ?, 'Pending')");
     $stmt->execute([$title, $description]);
 
     header("Location: index.php");
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -38,41 +37,53 @@ if (isset($_POST['submit'])) {
 
     <h1>Todo List</h1>
 
-    <!-- form create todo -->
+    <!-- FORM CREATE TODO -->
     <form method="post" class="todo-form">
         <label>Judul Todo</label>
         <input type="text" name="title" required>
 
         <label>Deskripsi (opsional)</label>
-        <textarea name="description" placeholder="No Description"></textarea>
+        <textarea name="description" placeholder="No description"></textarea>
 
         <button type="submit" name="submit">Tambah Todo</button>
     </form>
 
-    <!-- list data todo -->
+    <!-- LIST TODO -->
     <div class="todo-list">
         <?php if (count($todos) === 0): ?>
             <p class="empty">Belum ada todo</p>
         <?php else: ?>
             <?php foreach ($todos as $todo): ?>
                 <div class="todo-item">
+
+                    <!-- CONTENT -->
                     <div class="todo-content">
-                        <div class="todo-title"><?= htmlspecialchars($todo['title']) ?></div>
-                        <div class="todo-desc">
+                        <h3 class="todo-title">
+                            <?= htmlspecialchars($todo['title']) ?>
+                        </h3>
+
+                        <p class="todo-desc">
                             <?= htmlspecialchars($todo['description'] ?: 'No description') ?>
-                        </div>
+                        </p>
+
+                        <small class="todo-date">
+                            Dibuat: <?= $todo['created_at'] ?>
+                        </small>
                     </div>
 
-                    <span class="status <?= $todo['status'] ?>">
-                        <?= $todo['status'] ?>
-                    </span>
+                    <!-- ACTION -->
+                    <div class="todo-action">
+                        <span class="status <?= $todo['status'] ?>">
+                            <?= $todo['status'] ?>
+                        </span>
 
-                     <!-- DELETE BUTTON -->
-                <a href="delete.php?id=<?= $todo['id']; ?>"
-                class="delete-btn"
-                onclick="return confirm('Yakin ingin menghapus todo ini?')">
-                Hapus
-                </a>
+                        <a href="delete.php?id=<?= $todo['id'] ?>"
+                           class="delete-btn"
+                           onclick="return confirm('Yakin ingin menghapus todo ini?')">
+                           Hapus
+                        </a>
+                    </div>
+
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
