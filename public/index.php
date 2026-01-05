@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
         <input type="text" name="title" required>
 
         <label>Deskripsi (opsional)</label>
-        <textarea name="description" placeholder="Boleh dikosongkan"></textarea>
+        <textarea name="description" placeholder="No Description"></textarea>
 
         <button type="submit" name="submit">Tambah Todo</button>
     </form>
@@ -66,6 +66,13 @@ if (isset($_POST['submit'])) {
                     <span class="status <?= $todo['status'] ?>">
                         <?= $todo['status'] ?>
                     </span>
+
+                     <!-- DELETE BUTTON -->
+                <a href="delete.php?id=<?= $todo['id']; ?>"
+                class="delete-btn"
+                onclick="return confirm('Yakin ingin menghapus todo ini?')">
+                Hapus
+                </a>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
