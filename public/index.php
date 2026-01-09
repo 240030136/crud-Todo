@@ -29,13 +29,14 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <title>Todo List</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <div class="container">
 
     <h1>Todo List</h1>
+<input type="text" id="searchTodo" placeholder="Cari todo..." class="search-input">
 
     <!-- FORM CREATE TODO -->
     <form method="post" class="todo-form">
@@ -47,15 +48,21 @@ if (isset($_POST['submit'])) {
 
         <button type="submit" name="submit">Tambah Todo</button>
     </form>
-
+    
     <!-- LIST TODO -->
     <div class="todo-list">
         <?php if (count($todos) === 0): ?>
             <p class="empty">Belum ada todo</p>
         <?php else: ?>
             <?php foreach ($todos as $todo): ?>
-                <div class="todo-item">
 
+                
+               <div 
+            class="todo-item todo-search-item"
+            data-title="<?= strtolower($todo['title']) ?>"
+            data-desc="<?= strtolower($todo['description']) ?>"
+        >
+                
                     <!-- CONTENT -->
                     <div class="todo-content">
                         <h3 class="todo-title">
@@ -73,7 +80,8 @@ if (isset($_POST['submit'])) {
 
                     <!-- ACTION -->
                     <div class="todo-action">
-                        <span class="status <?= $todo['status'] ?>">
+                        <span class="status <?= $todo['status'] ?>"
+                        data-id="<?= $todo['id'] ?>">
                             <?= $todo['status'] ?>
                         </span>
 
@@ -82,10 +90,6 @@ if (isset($_POST['submit'])) {
                            onclick="return confirm('Yakin ingin menghapus todo ini?')">
                            Hapus
                         </a>
-                        <a href="edit.php?id=<?= $todo['id']; ?>" class="edit-btn">
-                          Edit
-                        </a>
-
                     </div>
 
                 </div>
@@ -94,6 +98,7 @@ if (isset($_POST['submit'])) {
     </div>
 
 </div>
+<script src="assets/js/app.js"></script>
 
 </body>
 </html>
