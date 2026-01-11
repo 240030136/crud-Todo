@@ -35,7 +35,8 @@ if (isset($_POST['submit'])) {
     } else {
         // ===== CREATE (INSERT) =====
         $stmt = $db->prepare(
-            "INSERT INTO todos (title, description, status) VALUES (?, ?, 'Pending')"
+            "INSERT INTO todos (title, description, status) VALUES (?, ?, 'pending')
+"
         );
         $stmt->execute([$title, $description]);
     }
@@ -98,9 +99,12 @@ if (isset($_POST['submit'])) {
 
   <!-- ACTION -->
     <div class="todo-action">
-        <span class="status <?= strtolower($todo['status']) ?>">
-            <?= $todo['status'] ?>
-        </span>
+        <a href="toggle_status.php?id=<?= $todo['id'] ?>"
+   class="status <?= $todo['status'] ?>">
+   <?= $todo['status'] ?>
+</a>
+
+
 
         <a href="?edit=<?= $todo['id'] ?>" class="edit-btn">Edit</a>
 

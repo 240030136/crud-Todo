@@ -158,3 +158,24 @@ body {
 .edit-btn:hover {
     background: #084298;
 }
+
+
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.status.pending {
+    background-color: #facc15;
+    color: #000;
+}
+
+.status.done {
+    background-color: #22c55e;
+    color: #fff;
+}
