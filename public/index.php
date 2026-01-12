@@ -8,17 +8,9 @@ $stmt = $db->prepare("SELECT * FROM todos ORDER BY id DESC");
 $stmt->execute();
 $todos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Edit Todo
-$editTodo = null;
-if (isset($_GET['edit'])) {
-    $stmt = $db->prepare("SELECT * FROM todos WHERE id = ?");
-    $stmt->execute([$_GET['edit']]);
-    $editTodo = $stmt->fetch(PDO::FETCH_ASSOC);
-}
 
-// Tambah / edit todo
+// Tambah todo
 if (isset($_POST['submit'])) {
-    $id = $_POST['id'] ?? null;
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
 
@@ -26,20 +18,10 @@ if (isset($_POST['submit'])) {
         $description = "No description";
     }
 
-    if ($id) {
-        // ===== EDIT (UPDATE) =====
-        $stmt = $db->prepare(
-            "UPDATE todos SET title = ?, description = ? WHERE id = ?"
-        );
-        $stmt->execute([$title, $description, $id]);
-    } else {
-        // ===== CREATE (INSERT) =====
-        $stmt = $db->prepare(
-            "INSERT INTO todos (title, description, status) VALUES (?, ?, 'pending')
-"
-        );
-        $stmt->execute([$title, $description]);
-    }
+    $stmt = $db->prepare(
+        "INSERT INTO todos (title, description, status) VALUES (?, ?, 'pending')"
+    );
+    $stmt->execute([$title, $description]);
 
     header("Location: index.php");
     exit;
@@ -62,20 +44,13 @@ if (isset($_POST['submit'])) {
 
 <!-- FORM CREATE TODO -->
 <form method="post" class="todo-form">
-
-    <input type="hidden" name="id" value="<?= $editTodo['id'] ?? '' ?>">
-
     <label>Judul Todo</label>
-    <input type="text" name="title" required
-        value="<?= htmlspecialchars($editTodo['title'] ?? '') ?>">
+    <input type="text" name="title" required>
 
     <label>Deskripsi (opsional)</label>
-    <textarea name="description"><?= htmlspecialchars($editTodo['description'] ?? '') ?></textarea>
+    <textarea name="description"></textarea>
 
-    <button type="submit" name="submit">
-        <?= $editTodo ? 'Update Todo' : 'Tambah Todo' ?>
-    </button>
-
+    <button type="submit" name="submit">Tambah Todo</button>
 </form>
 
 <!-- LIST TODO -->
@@ -104,9 +79,7 @@ if (isset($_POST['submit'])) {
    <?= $todo['status'] ?>
 </a>
 
-
-
-        <a href="?edit=<?= $todo['id'] ?>" class="edit-btn">Edit</a>
+        <a href="edit.php?id=<?= $todo['id'] ?>" class="edit-btn">Edit</a>
 
         <a href="delete.php?id=<?= $todo['id'] ?>"
            class="delete-btn"
