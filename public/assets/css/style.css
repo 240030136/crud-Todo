@@ -5,41 +5,40 @@
 }
 
 body {
-    background: linear-gradient(135deg, #eef2f7, #f9fafb);
+    background: linear-gradient(135deg, #e0e7ff, #f8fafc);
     margin: 0;
     padding: 30px;
 }
 
 .container {
-    max-width: 720px;
+    max-width: 740px;
     margin: auto;
     background: #ffffff;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    padding: 25px 28px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 h1 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 28px;
-    color: #1f2937;
+    margin: 0 0 10px;
+    font-size: 30px;
+    color: #1e3a8a;
 }
 
 /* ===== SEARCH ===== */
 .search-input {
     width: 100%;
-    padding: 12px;
-    margin: 15px 0 25px;
-    border-radius: 10px;
-    border: 1px solid #d1d5db;
+    padding: 12px 14px;
+    margin: 18px 0 25px;
+    border-radius: 12px;
+    border: 1px solid #c7d2fe;
     outline: none;
     transition: 0.2s;
 }
 
 .search-input:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
 
 /* ===== FORM ===== */
@@ -47,24 +46,24 @@ h1 {
     display: block;
     margin-top: 14px;
     font-weight: 600;
-    color: #374151;
+    color: #1f2937;
 }
 
 .todo-form input,
 .todo-form textarea {
     width: 100%;
-    padding: 10px 12px;
+    padding: 10px 14px;
     margin-top: 6px;
-    border-radius: 10px;
-    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    border: 1px solid #c7d2fe;
     transition: 0.2s;
 }
 
 .todo-form input:focus,
 .todo-form textarea:focus {
-    border-color: #3b82f6;
+    border-color: #4f46e5;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
 
 .todo-form textarea {
@@ -73,43 +72,44 @@ h1 {
 }
 
 .todo-form button {
-    margin-top: 18px;
+    margin-top: 20px;
     padding: 12px;
     border: none;
-    background: #3b82f6;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
     color: white;
     border-radius: 999px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 14px;
     transition: 0.2s;
 }
 
 .todo-form button:hover {
-    background: #2563eb;
     transform: translateY(-1px);
+    background: linear-gradient(135deg, #4338ca, #4f46e5);
 }
 
 /* ===== LIST TODO ===== */
 .todo-list {
-    margin-top: 30px;
+    margin-top: 32px;
 }
 
 .todo-item {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    background: #ffffff;
-    padding: 16px 18px;
-    border-radius: 14px;
-    margin-bottom: 14px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
-    transition: 0.2s;
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    padding: 18px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    border-left: 6px solid #6366f1;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: 0.25s;
 }
 
 .todo-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
 }
 
 /* CONTENT */
@@ -126,7 +126,7 @@ h1 {
 
 .todo-content small {
     font-size: 12px;
-    color: #9ca3af;
+    color: #6b7280;
 }
 
 /* ===== ACTION ===== */
@@ -139,7 +139,7 @@ h1 {
 
 /* STATUS */
 .status {
-    padding: 6px 14px;
+    padding: 6px 16px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: bold;
@@ -148,12 +148,12 @@ h1 {
 }
 
 .status.pending {
-    background-color: #facc15;
+    background: linear-gradient(135deg, #fde047, #facc15);
     color: #000;
 }
 
 .status.done {
-    background-color: #22c55e;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
     color: #fff;
 }
 
@@ -161,7 +161,7 @@ h1 {
 .edit-btn,
 .delete-btn {
     text-decoration: none;
-    padding: 6px 14px;
+    padding: 6px 16px;
     border-radius: 999px;
     font-size: 12px;
     font-weight: bold;
@@ -169,26 +169,26 @@ h1 {
 }
 
 .edit-btn {
-    background: #3b82f6;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
     color: white;
 }
 
 .edit-btn:hover {
-    background: #2563eb;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
 }
 
 .delete-btn {
-    background: #ef4444;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
     color: white;
 }
 
 .delete-btn:hover {
-    background: #dc2626;
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
 }
 
 /* EMPTY */
 .empty {
     text-align: center;
-    color: #6b7280;
-    padding: 20px 0;
+    color: #64748b;
+    padding: 25px 0;
 }
