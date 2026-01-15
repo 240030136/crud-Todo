@@ -16,7 +16,7 @@ Project ini dibuat sebagai bagian dari pembelajaran dan implementasi pengembanga
 ## 👥 Daftar Anggota
 - I Dewa Gede Windraya Nandana (240030158), Username : dewegedewindraya250506, Peran : membuat css untuk fungsi delete dan membuat readme.md
 - Made Dendy Ari Swastika (240030136), Username : 240030136, Peran : membuat struktur aplikasi, membuat koneksi ke database, membantu dalam pembuatan css, membuat fungsi (edit, create, delete), membuat fitur search
-- Kadek Putra Sudana Jaya (240030160), Username : KadekPutra240030160, Peran : membuat css (fungsi create dan list data), membuat fungsi toggle status dan css nya
+- Kadek Putra Sudana Jaya (240030160), Username : KadekPutra240030160, Peran : membuat css (fungsi create dan list data), membuat fungsi toggle status dan css nya, membantu membuat readme.md
 
 ---
 
